@@ -1,0 +1,29 @@
+<h1>{{username}}</h1> No of Stargazers :
+<input type="text" ng-model="noOfStargazers" />
+<p/> Name Filter :
+<input type="text" ng-model="nameFilter" />
+<p/> Total Stargazers : {{starCount.length}}
+
+<p/>
+<a href="/star_friend/">&lt;- Back to Search</a>
+
+<div>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Stars</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="stargazer in starCount|orderBy:'-starCount'|filter:nameFilter|limitTo:noOfStargazers">
+                <td>
+                    <a href="/star_friend/#/star_of/{{stargazer.name}}">
+                    {{stargazer.name}}
+                    </a>
+                </td>
+                <td>{{stargazer.starCount}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
