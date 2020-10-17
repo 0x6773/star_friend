@@ -17,18 +17,17 @@
             };
 
             var updateStargazers = function (response) {
-                var starCountJSON = [];
+                var starCountJson = [];
                 for (var name in starCount) {
-                    starCountJSON.push({
+                    starCountJson.push({
                         name: name,
                         starCount: starCount[name]
                     });
                 }
-                $scope.starCount = starCountJSON;
+                $scope.starCount = starCountJson;
             };
 
             var promises = [];
-
             for (var i in repos) {
                 promises.push(github.getStargazers(repos[i]).then(addStargazers));
             }
